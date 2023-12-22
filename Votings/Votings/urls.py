@@ -20,5 +20,7 @@ from SuperVotings import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index)
+    path('', views.authorization),
+    path('main', views.index),
+    path('restore_page', views.restore_page)
 ]
