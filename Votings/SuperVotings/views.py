@@ -1,10 +1,14 @@
 from django.shortcuts import render
+from SuperVotings.forms import RadioForm
 
 def index(request):
     context = {}
-    context['name'] = 'Egor'
+    context['name'] = 'user'
     varinats = ['Putin', 'Trump', 'Xin Jin Pin']
-    context['votings'] = varinats
+    context['candidates'] = varinats
+    if request.method == "POST":
+        form = RadioForm(context['candidates'])
+
 
     return render(request, 'index.html', context)
 
@@ -13,3 +17,4 @@ def authorization(request):
 
 def restore_page(requset):
     return render(requset, 'restore_page.html')
+

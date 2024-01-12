@@ -19,8 +19,8 @@ from django.urls import path
 from SuperVotings import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.authorization),
-    path('main', views.index),
-    path('restore_page', views.restore_page)
+    path('admin/', admin.site.urls, name='admin'),
+    path('', views.authorization, name='authorization'),
+    path('main', views.index, name='index'),
+    path('restore_page', views.restore_page, name='restore')
 ]

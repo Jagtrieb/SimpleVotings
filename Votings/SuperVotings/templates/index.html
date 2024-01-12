@@ -6,10 +6,9 @@
 </head>
 <body>
     <h1>Hello {{name}}!</h1>
-    <ul>
-        {% for item in votings %}
-        <li>{{item}}</li>
-        {% endfor %}
-    </ul>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.
+    </form>
 </body>
 </html>
