@@ -20,7 +20,9 @@ from SuperVotings import views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('', views.authorization, name='authorization'),
-    path('main', views.index, name='index'),
-    path('restore_page', views.restore_page, name='restore')
+    path('', views.index, name='index'),
+    path('login', views.authorization, name='authorization'),
+    path('signup', views.signup, name='signup'),
+    path('restore_page', views.restore_page, name='restore'),
+    path('voting', views.voting_page, name='voting')
 ]
