@@ -20,7 +20,7 @@ def signup(request):
 
 def voting_page(requset):
     context = {}
-    varinats = ['Putin', 'Trump', 'Xin Jin Pin']
+    varinats = ['Putin', 'Trump', 'Obama']
     context['candidates'] = varinats
     return render(requset, 'voting.html', context)
 def results_page(request):
