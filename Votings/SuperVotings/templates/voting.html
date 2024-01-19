@@ -5,13 +5,18 @@
     <title>Voting page</title>
 </head>
 <body>
-    <h1>Here's the voting page!</h1>
-    <hr>
-    <ul>
-    {% for item in candidates %}
-    <li>{{item}}</li>
-    {% endfor %}
-    </ul>
+<h1>Here's the voting page!</h1>
 
+<form action="" method="post">
+    {% csrf_token %}
+    {% for item in candidates %}
+    <div class="form-check">
+        <input type="radio" value={{item}}
+               id={{item}} name="variants">
+        <label for={{item}}>{{item}}</label>
+    </div>
+    {% endfor %}
+    <button type="submit">Vote!</button>
+</form>
 </body>
 </html>
