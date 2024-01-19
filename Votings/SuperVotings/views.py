@@ -23,3 +23,5 @@ def voting_page(requset):
     varinats = ['Putin', 'Trump', 'Xin Jin Pin']
     context['candidates'] = varinats
     return render(requset, 'voting.html', context)
+def results_page(request):
+    return render(request, 'results.html')
