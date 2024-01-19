@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
 
 
 def index(request):
@@ -22,8 +24,14 @@ def signup(request):
 
 def voting_page(requset):
     context = {}
-    varinats = ['Putin', 'Trump', 'Xin Jin Ping']
-    context['candidates'] = varinats
+    cands = ['Putin', 'Trump', 'Xin Jin Pin']
+    context['candidates'] = cands
+    if requset.method == 'POST':
+        variants = requset.POST.getlist('variants')
+        #messages.success(requset, 'You have voted successfully!')
+        print(variants)
+        return redirect('index')
+
     return render(requset, 'voting.html', context)
 
 def results_page(request):
