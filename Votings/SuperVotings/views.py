@@ -1,5 +1,9 @@
+import random
 from django.shortcuts import render
 from SuperVotings.forms import RadioForm
+
+from SuperVotings.models import Vote
+
 
 def index(request):
     context = {}
@@ -23,5 +27,9 @@ def voting_page(requset):
     varinats = ['Putin', 'Trump', 'Xin Jin Pin']
     context['candidates'] = varinats
     return render(requset, 'voting.html', context)
-def results_page(request):
-    return render(request, 'results.html')
+
+def votes(requset):
+    context = {'pagename':'title'}
+    vote = Vote(title=random.randint(10, 99), description="asdasds", mode=1)
+    context['votes'] = Vote.objects.all()
+    return render(requset, 'votes.html', context)
