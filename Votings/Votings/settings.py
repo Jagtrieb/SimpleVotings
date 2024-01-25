@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Votings',
-    'SuperVotings'
+    'SuperVotings',
+    'django_bootstrap5'
 ]
 
 MIDDLEWARE = [

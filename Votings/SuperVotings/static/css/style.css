@@ -1,0 +1,12 @@
+body {
+  background-color: #36393E;
+  color: #FFF;
+  font-family: 'Arial', sans-serif;
+}
+.red-block {
+  background-color: red;
+}
+
+.inline{
+  color: #FFF
+}

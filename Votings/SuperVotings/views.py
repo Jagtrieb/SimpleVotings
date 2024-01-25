@@ -32,4 +32,4 @@ def votes(requset):
     context = {'pagename':'title'}
     vote = Vote(title=random.randint(10, 99), description="asdasds", mode=1)
     context['votes'] = Vote.objects.all()
-    return render(requset, 'votes.html', context)
+    return render(requset, 'pages/votes_create.html', context)
