@@ -2,12 +2,15 @@
 
 
 {% block content %}
+{% for vote in votes %}
 <div class="card">
   <h5 class="card-header">Featured</h5>
+  {{vote.title}}
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">{{vote.title}}</h5>
+    <p class="card-text">{{vote.description}}</p>
+    <a href="/vote/{{vote.id}}" class="btn btn-primary">Проголосовать</a>
   </div>
 </div>
+{% endfor %}
 {% endblock %}
