@@ -4,12 +4,13 @@ from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect
 from SuperVotings.forms import RadioForm, AddSnippetForm
-
+import random
 from SuperVotings.models import Vote
 def index(request):
     context = {}
     context['votes'] = Vote.objects.all()
-
+    spisok=context['votes']
+    context['id'] = [spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)], spisok[random.randint(0, len(context['votes'])-1)]]
     return render(request, 'index.html', context)
 
 def authorization(request):
@@ -27,9 +28,9 @@ def s(request):
     print("aboba")
     print(res)
     if res:
-        find_votes=Vote.objects.filter(title=res)
+        find_votes = Vote.objects.filter(title=res)
     else:
-        find_votes=Vote.objects.filter(title=res)
+        find_votes = Vote.objects.filter(title=res)
     context['votes'] = find_votes
     return render(request, 'pages/votes.html', context)
 
@@ -70,4 +71,11 @@ def votes_create1(request):
             return redirect('votes_add')
     return render(request, 'pages/votes_create.html')
 
-
+def results(request, id: int):
+    context = {'pagename': 'page not found'}
+    vote = Vote.objects.filter(id=id)
+    if len(vote) == 0:
+        return render(request, "404.html")
+    context["pagename"] = vote[0].title
+    context["vote"] = vote[0]
+    return render(request, 'pages/result.html', context)
