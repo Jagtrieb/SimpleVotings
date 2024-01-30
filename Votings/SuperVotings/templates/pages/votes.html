@@ -2,12 +2,13 @@
 
 
 {% block content %}
-
+{% for vote in votes %}
 <div class="card">
+  <h5 class="card-header">{{vote.title}}</h5>
   <div class="card-body">
-    <h5 class="card-title">{{vote.title}}</h5>
     <p class="card-text">{{vote.description}}</p>
+    <a href="/votes/{{vote.id}}" class="btn btn-primary">Проголосовать</a>
   </div>
 </div>
-
+{% endfor %}
 {% endblock %}

@@ -25,6 +25,7 @@ urlpatterns = [
     path('signup', views.signup, name='signup'),
     path('restore_page', views.restore_page, name='restore'),
     path('voting', views.voting_page, name='voting'),
-    path('votes_create', views.votes_create, name='votes_create'),
-    path('vote/<id>', views.votes_view, name='votes_view')
+    path('votes/add', views.votes_create1, name='votes_add'),
+    path('votes/list', views.votes, name='votes'),
+    path('votes/<id>', views.votes_view, name='vote_view')
 ]

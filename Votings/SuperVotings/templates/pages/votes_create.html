@@ -2,15 +2,24 @@
 
 
 {% block content %}
-{% for vote in votes %}
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  {{vote.title}}
-  <div class="card-body">
-    <h5 class="card-title">{{vote.title}}</h5>
-    <p class="card-text">{{vote.description}}</p>
-    <a href="/vote/{{vote.id}}" class="btn btn-primary">Проголосовать</a>
-  </div>
+<div class="row justify-content-md-center">
+    <div class="col">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Name of the vote {{ addform.name }}</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name of the vote">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Vote description {{ addform.description }}</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <input type="submit" class="btn btn-primary btn-block" value="Отправить">
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
-{% endfor %}
 {% endblock %}

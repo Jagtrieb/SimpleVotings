@@ -10,3 +10,9 @@ body {
 .inline{
   color: #FFF
 }
+
+section{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+

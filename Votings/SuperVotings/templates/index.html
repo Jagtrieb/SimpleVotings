@@ -1,18 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Hello {{name}}!</h1>
-    <hr>
-    <ul>
-       <li> <a href="voting">Voting page</a></li>
-       <li><a href="login">Log In</a></li>
-       <li> <a href="signup">Sign Up</a></li>
-        <li> <a href="results">Results page</a></li>
-        <li> <a href="votes_create">Votes Create</a></li>
-    </ul>
-</body>
-</html>
+{% extends 'base/base.html' %}
+
+
+{% block content %}
+<div class="container-xxl">
+	<div id="carouselExample" class="carousel slide">
+	  <div class="carousel-inner">
+		<div class="carousel-item active">
+			<div class="row">
+				<div class="col">
+				  <div class="card">
+					  <h5 class="card-header">{{votes.1.title}}</h5>
+					  <div class="card-body">
+						<p class="card-text">{{votes.1.description}}</p>
+						<a href="/votes/{{vote.id}}" class="btn btn-primary">Проголосовать</a>
+					  </div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item">
+		  <div class="row">
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item">
+		  <div class="row">
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Заголовок карточки</h5>
+						<p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+						<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+					  </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Предыдущий</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Следующий</span>
+	  </button>
+	</div>
+</div>
+{% endblock %}
