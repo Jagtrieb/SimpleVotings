@@ -21,6 +21,18 @@ def restore_page(request):
 def signup(request):
     return render(request, 'signup.html')
 
+def s(request):
+    context = {}
+    res = request.POST.get("search", "")
+    print("aboba")
+    print(res)
+    if res:
+        find_votes=Vote.objects.filter(title=res)
+    else:
+        find_votes=Vote.objects.filter(title=res)
+    context['votes'] = find_votes
+    return render(request, 'pages/votes.html', context)
+
 def voting_page(request):
     context = {}
     varinats = ['Putin', 'Trump', 'Xin Jin Pin']
@@ -44,9 +56,10 @@ def votes_view(request: WSGIRequest, id: int):
 def votes_create1(request):
     context={}
     if request.method == 'POST':
-        addform = AddSnippetForm(request.POST)
-        if addform.is_valid():
-            vote = Vote(title=addform.data['name'], description=addform.data['description'], mode=1)
+        if request.POST.get("title") != "" or request.POST.get("description") != "":
+            title = request.POST.get("title", "Голосование")
+            description = request.POST.get("description", "Голосуйте")
+            vote = Vote(title=title, description=description, mode=1)
             vote.save()
             id = vote.id
             context['votes'] = Vote.objects.all()
@@ -55,8 +68,6 @@ def votes_create1(request):
         else:
             messages.add_message(request, messages.ERROR, "Некорректные данные в форме")
             return redirect('votes_add')
-    else:
-        context['addform'] = AddSnippetForm()
     return render(request, 'pages/votes_create.html')
 
 

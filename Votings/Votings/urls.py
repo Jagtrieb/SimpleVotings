@@ -27,5 +27,6 @@ urlpatterns = [
     path('voting', views.voting_page, name='voting'),
     path('votes/add', views.votes_create1, name='votes_add'),
     path('votes/list', views.votes, name='votes'),
-    path('votes/<id>', views.votes_view, name='vote_view')
+    path('votes/<id>', views.votes_view, name='vote_view'),
+    path('find_votes', views.s, name='search'),
 ]

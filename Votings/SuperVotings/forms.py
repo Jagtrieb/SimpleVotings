@@ -15,3 +15,13 @@ class AddSnippetForm(forms.Form):
             }
         )
     )
+    description = forms.CharField(
+        label='Код',
+        max_length=5000,
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'style': 'height:500px'
+            }
+        )
+    )
