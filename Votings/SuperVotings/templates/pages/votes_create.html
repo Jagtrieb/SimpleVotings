@@ -2,9 +2,17 @@
 
 {% block content %}
 {% block extra_css %}
-<style>
+<script>
+var x = 3;
 
-</style>
+function addInput() {
+	if (x < 10) {
+    var str = '<input name=' + (x + 1) +' type="text" class="form-control" placeholder=participant' + (x + 1) + ' id=' + (x + 1) +'> <div id="input' + (x + 1) + '"></div>';
+    document.getElementById('input' + x).innerHTML = str;
+    x++;
+    }
+}
+</script>
 {% endblock %}
 
 <div class="row justify-content-md-center">
@@ -16,14 +24,20 @@
               <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name of the vote">
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Vote</label>
+              <label for="exampleFormControlTextarea1" class="form-label">Vote description:</label>
               <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
             </div>
-            <div class="mb-3">
-              <input name="1" type="text" class="form-control" id="1" placeholder="participant1">
-                <input name="2" type="text" class="form-control" id="2" placeholder="participant2">
-                <input name="3" type="text" class="form-control" id="3" placeholder="participant3">
+            <div class="mb-3" id="input0">
+                <input name="1" type="text" class="form-control" id="1" placeholder="participant1">
+                <div class="mb-3" id="input1">
+                    <input name="2" type="text" class="form-control" id="2" placeholder="participant2">
+                    <div class="mb-3" id="input2">
+                        <input name="3" type="text" class="form-control" id="3" placeholder="participant3">
+                        <div class="mb-3" id="input3"></div>
+                    </div>
+                </div>
             </div>
+            <input type="button" class="add" onclick="addInput()" value="Добавить">
             <br><br>
             <div class="form-group row">
                 <div class="col">

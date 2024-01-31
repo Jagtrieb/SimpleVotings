@@ -2,17 +2,6 @@
 
 
 {% block content %}
-<script>function myFunction() {
-  var participant = document.getElementsByName("participant");
-  var txt = "";
-  var i;
-  for (i = 0; i < participant.length; i++) {
-    if (participant[i].checked) {
-      txt = txt + participant[i].value + " ";
-    }
-  }
-  document.getElementById("order").value = "You ordered a coffee with: " + txt;
-}</script>
 <form action="" method="post">
   {% csrf_token %}
     <div class="card">
@@ -26,9 +15,15 @@
         {% endfor %}
         <div class="form-group row">
                 <div class="col">
-                  <input type="submit" class="btn btn-primary" value="Отправить">
+                  <input name="vote" type="submit" class="btn btn-primary" value="Отправить">
                 </div>
-            </div>
+        </div>
+        <br><br>
+        <div class="form-group row">
+                <div class="col">
+                  <input name="result" type="submit" class="btn btn-primary" value="Результаты">
+                </div>
+        </div>
       </div>
     </div>
 </form>

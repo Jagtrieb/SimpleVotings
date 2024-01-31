@@ -3,7 +3,6 @@ import random
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect
-from SuperVotings.forms import RadioForm, AddSnippetForm
 import random
 from SuperVotings.models import Vote, Participant
 def index(request):
@@ -55,11 +54,13 @@ def votes_view(request: WSGIRequest, id: int):
     context["vote"] = vote[0]
     context['participants'] = Participant.objects.filter(vote_id=id)
     if request.method == 'POST':
-        participant_id = request.POST.get("radio")
-        participant = Participant.objects.filter(id=participant_id)
-        count=participant[0].count
-        participant.update(count=(count+1))
-        print(participant[0].count)
+        if "vote" in request.POST:
+            participant_id = request.POST.get("radio")
+            participant = Participant.objects.filter(id=participant_id)
+            count = participant[0].count
+            participant.update(count=(count+1))
+        elif "result" in request.POST:
+            return redirect('results', id=id)
     return render(request, 'pages/vote.html', context)
 
 def votes_create1(request):
@@ -71,13 +72,14 @@ def votes_create1(request):
             vote = Vote(title=title, description=description, mode=1)
             vote.save()
             id = vote.id
-            for i in range(1, 4):
+            for i in range(1, 11):
                 name = request.POST.get(str(i))
-                participant = Participant(name=name, vote_id=id)
-                participant.save()
+                if name != None:
+                    participant = Participant(name=name, vote_id=id)
+                    participant.save()
             context['participants'] = Participant.objects.filter(vote_id=id)
             context['votes'] = Vote.objects.all()
-            messages.add_message(request, messages.SUCCESS, "Сниппет успешно добавлен")
+            messages.add_message(request, messages.SUCCESS, "Голосование успешно добавлено")
             return redirect('vote_view', id=id)
         else:
             messages.add_message(request, messages.ERROR, "Некорректные данные в форме")
@@ -91,4 +93,10 @@ def results(request, id: int):
         return render(request, "404.html")
     context["pagename"] = vote[0].title
     context["vote"] = vote[0]
+    context['participants'] = Participant.objects.filter(vote_id=id)
+    winner = context['participants'][0]
+    for participant in context['participants']:
+        if participant.count > winner.count:
+            winner = participant
+    context['winner'] = winner
     return render(request, 'pages/result.html', context)
