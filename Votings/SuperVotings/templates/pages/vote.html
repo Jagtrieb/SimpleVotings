@@ -2,13 +2,35 @@
 
 
 {% block content %}
-
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">{{vote.title}}</h5>
-    <p class="card-text">{{vote.description}}</p>
-    <a href="/votes/{{vote.id}}/results" class="btn btn-primary">Смотреть результат</a>
-  </div>
-</div>
+<script>function myFunction() {
+  var participant = document.getElementsByName("participant");
+  var txt = "";
+  var i;
+  for (i = 0; i < participant.length; i++) {
+    if (participant[i].checked) {
+      txt = txt + participant[i].value + " ";
+    }
+  }
+  document.getElementById("order").value = "You ordered a coffee with: " + txt;
+}</script>
+<form action="" method="post">
+  {% csrf_token %}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{vote.title}}</h5>
+        <p class="card-text">{{vote.description}}</p>
+        {% for participant in participants %}
+          <div class="form-check">
+            <input value="{{participant.id}}" class="form-check-input" type="radio" name="radio" id="{{ participant.vote_id }}" checked>{{participant.name}}
+          </div>
+        {% endfor %}
+        <div class="form-group row">
+                <div class="col">
+                  <input type="submit" class="btn btn-primary" value="Отправить">
+                </div>
+            </div>
+      </div>
+    </div>
+</form>
 
 {% endblock %}

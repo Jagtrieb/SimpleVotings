@@ -1,19 +1,30 @@
 {% extends 'base/base.html' %}
 
-
 {% block content %}
+{% block extra_css %}
+<style>
+
+</style>
+{% endblock %}
+
 <div class="row justify-content-md-center">
     <div class="col">
         <form action="" method="post">
             {% csrf_token %}
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Name of the vote</label>
+              <label for="exampleFormControlInput1" class="form-label">Name of the vote:</label>
               <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name of the vote">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Vote</label>
-              <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
             </div>
+            <div class="mb-3">
+              <input name="1" type="text" class="form-control" id="1" placeholder="participant1">
+                <input name="2" type="text" class="form-control" id="2" placeholder="participant2">
+                <input name="3" type="text" class="form-control" id="3" placeholder="participant3">
+            </div>
+            <br><br>
             <div class="form-group row">
                 <div class="col">
                     <input type="submit" class="btn btn-primary btn-block" value="Отправить">
